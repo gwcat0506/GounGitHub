@@ -1,0 +1,21 @@
+install.packages("psych")
+a <- c(58, 49, 39, 99, 32, 88, 62, 30, 55, 65, 44, 55, 57, 53, 88, 42, 39)
+str(a)
+library(psych)
+describe(a)
+opar <- par(no.readonly = T)
+par(mfrow=c(1,2))
+boxplot(a)
+hist(a,breaks = 10,col="red")
+par(opar)
+t.test(a, alternative = "greater",mu=55, conf.level = 0.95)
+mu=55
+se=4.79
+inter = qt(p=0.05, df = 16, lower.tail = F)
+data <- rnorm(55,mu,se)
+data <- sort(data)
+plot(data, dnorm(data,mu,se),type ='l',main="Math point test")
+abline(v=mu, col="green",lty=5)
+abline(v=mu+inter*se, col="blue",lty=5)
+abline(v=56.18, col="red",lty=5)
+
